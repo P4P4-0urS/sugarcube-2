@@ -20,6 +20,8 @@ const CONFIG = {
 		main : [
 			// The ordering herein is significant.
 			'src/lib/alert.js',
+			'src/day&lights.json.js',
+			'src/day&lights.js',
 			'src/lib/patterns.js',
 			'src/lib/extensions.js',
 			'src/lib/browser.js',
@@ -70,6 +72,7 @@ const CONFIG = {
 	},
 	css : [
 		// The ordering herein is significant.
+
 		'src/vendor/normalize.css',
 		'src/css/init-screen.css',
 		'src/css/font.css',
@@ -80,7 +83,12 @@ const CONFIG = {
 		'src/css/ui-dialog.css',
 		'src/css/ui.css',
 		'src/css/ui-bar.css',
-		'src/css/ui-debug.css'
+		'src/css/ui-debug.css',
+		'src/css/button-switch.css',
+		'src/vendor/bootstrap.css',
+		'src/vendor/fontawesome.css',
+		'src/vendor/argon.css',
+		'src/css/day&lights.css'
 	],
 	libs : [
 		// The ordering herein is significant.
@@ -93,7 +101,9 @@ const CONFIG = {
 		'src/vendor/lz-string.min.js',
 		'src/vendor/FileSaver.min.js',
 		'src/vendor/seedrandom.min.js',
-		'src/vendor/console-hack.min.js'
+		'src/vendor/console-hack.min.js',
+		'src/vendor/bootstrap.min.js',
+		'src/vendor/argon.js'
 	],
 	twine1 : {
 		build : {
@@ -114,7 +124,7 @@ const CONFIG = {
 	twine2 : {
 		build : {
 			src  : 'src/templates/twine2/html.tpl',
-			dest : 'build/twine2/sugarcube-2/format.js',
+			dest : '../devTools/storyformats/sugarcube-2/format.js',
 			json : 'src/templates/twine2/config.json'
 		},
 		copy : [
@@ -185,9 +195,11 @@ if (_opt.options.build) {
 (() => {
 	console.log('Starting builds...');
 
+	cssParser();
+
 	// Create the build ID file, if nonexistent.
 	if (!_fs.existsSync('.build')) {
-		writeFileContents('.build', 0);
+		writeFileContents('.build', '0');
 	}
 
 	// Get the version info and build metadata.
@@ -267,7 +279,7 @@ if (_opt.options.build) {
 	}
 
 	// Update the build ID.
-	writeFileContents('.build', version.build);
+	writeFileContents('.build', version.build.toString());
 })();
 
 // That's all folks!
@@ -277,6 +289,56 @@ console.log('\nBuilds complete!  (check the "build" directory)');
 /*******************************************************************************
 	Utility Functions
 *******************************************************************************/
+function cssParser() {
+	console.log('[*] Starting paring of the css');
+
+	let path = _path.normalize('src/css/day&lights.css');
+
+	if (_fs.statSync(path)) {
+		let content = _fs.readFileSync(path, { encoding : 'utf-8' })
+			.replace(new RegExp('\r\n','g'), '\n')
+			.replace(new RegExp('\\/\\*[^*][^]*?\\*\\/','g'),'') // strip comments
+			.replace(new RegExp('(^|\n)[^{\t }][A-z-:!]+\n{','g') ,
+				match => { // target class definition
+				return '"' // start every declaration by a double quote
+					.concat(match.replace(new RegExp('\n{','g'),'" : { ')) // add after that the string while adding the rest
+					.replace('\n',''); // we strip any \n in the declaration
+			})
+			.replace(new RegExp('}'),'},') // every braket will be followed by a ,
+		content = content.replace(new RegExp('^[ \\t][^:;\\n]*: *','gm'), // target every line were we have a attributes definition
+				match => {
+				return match
+					.replace(new RegExp('[\n\t ]*'),'"')
+					.replace(new RegExp(' *: *','g'),'" : ["'); // wraping in quote and ad a[
+			});
+		content = content.replace(new RegExp(': \\["[^;]*;[^/\\n]*','g'),
+				match => {
+				return match
+					.replace(new RegExp(' *;[^]*','g'),'","');
+			})
+			.replace(new RegExp('\\/\\*\\*[ \t]*','g'),'')
+			.replace(new RegExp('[ \t]*\\*\\/[ \t]*','g'),'"],')
+			.replace(new RegExp(',[ \n\t]}','g'),'\n}');
+
+
+		while (!content.endsWith('}')) { // we need to undo the last ,
+			content = content.slice(0,content.length - 1);
+		}
+		content = 'let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { css : { value : {'.concat(content,'}}}))})();');
+
+		console.log(content);
+
+		path = 'src/day&lights.json.js';
+
+		writeFileContents(path,content);
+	}
+	else {
+		die('can\'t access the "src/css/day&lights.css"');
+	}
+}
+
+
+
 function log(message, indent) {
 	console.log('%s%s', indent ? indent : _indent, message);
 }

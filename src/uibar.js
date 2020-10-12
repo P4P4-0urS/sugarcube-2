@@ -71,6 +71,7 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 					/* eslint-disable max-len */
 					  '<div id="ui-bar">'
 					+     '<div id="ui-bar-tray">'
+
 					+         `<button id="ui-bar-toggle" tabindex="0" title="${toggleLabel}" aria-label="${toggleLabel}"></button>`
 					+         '<div id="ui-bar-history">'
 					+             `<button id="history-backward" tabindex="0" title="${backwardLabel}" aria-label="${backwardLabel}">\uE821</button>`
@@ -81,7 +82,9 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 					+     '<div id="ui-bar-body">'
 					+         '<header id="title" role="banner">'
 					+             '<div id="story-banner"></div>'
-					+             '<h1 id="story-title"></h1>'
+					+             '<hr>'
+					+             '<h1 id="story-title" class="text-secondary" ></h1>'
+					+             '<hr>'
 					+             '<div id="story-subtitle"></div>'
 					+             '<div id="story-title-separator"></div>'
 					+             '<p id="story-author"></p>'
@@ -90,12 +93,19 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 					+         '<nav id="menu" role="navigation">'
 					+             '<ul id="menu-story"></ul>'
 					+             '<ul id="menu-core">'
-					+                 `<li id="menu-item-saves"><a tabindex="0">${L10n.get('savesTitle')}</a></li>`
-					+                 `<li id="menu-item-settings"><a tabindex="0">${L10n.get('settingsTitle')}</a></li>`
-					+                 `<li id="menu-item-restart"><a tabindex="0">${L10n.get('restartTitle')}</a></li>`
-					+                 `<li id="menu-item-share"><a tabindex="0">${L10n.get('shareTitle')}</a></li>`
+					+                 `<li id="menu-item-saves"><button type="button" class="btn btn-icon btn-secondary"><span class="btn-inner--icon"><i class="far fa-save"></i></span><span class="btn-iner--text">${L10n.get('savesTitle')}</span></button></li>`
+					+                 `<li id="menu-item-settings"><button type="button" class="btn btn-icon btn-secondary"><span class="btn-inner--icon"><i class="fa fa-cogs"></i></span><span class="btn-iner--text">${L10n.get('settingsTitle')}</span></button></li>`
+					+                 `<li id="menu-item-restart"><button type="button" class="btn btn-icon btn-secondary"><span class="btn-inner--icon"><i class="fa fa-power-off"></i></span><span class="btn-iner--text">${L10n.get('restartTitle')}</span></button></li>`
+					+                 `<li id="menu-item-share"><button type="button" class="btn btn-icon btn-secondary"><span class="btn-inner--icon"><i class="fa fa-share-alt"></i></span><span class="btn-iner--text">${L10n.get('shareTitle')}</span></button></li>`
 					+             '</ul>'
 					+         '</nav>'
+					+         '<div id="ui-bar-body-debug"></div>' //AJOUT DU DEBUG
+					+     '<div style="font-size : 24px;">'
+					+         '<i class="far fa-sun"></i>'
+					+              '<label class="btn-switch">'
+                    +                  '<input type="checkbox" id="switch-day-nights">'
+					+                  '<span class="btn-switch-bg-dayLights btn-slider-slider"></span>'
+					+              '</label><i class="far fa-moon"></i></div>' //
 					+     '</div>'
 					+ '</div>'
 					/* eslint-enable max-len */
@@ -217,7 +227,7 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 		}
 
 		// Set up the Saves menu item.
-		jQuery('#menu-item-saves a')
+		jQuery('#menu-item-saves button')
 			.ariaClick(ev => {
 				ev.preventDefault();
 				UI.buildSaves();
@@ -225,9 +235,12 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 			})
 			.text(L10n.get('savesTitle'));
 
+		jQuery('#switch-day-nights')
+			.change(DayLights.toggle);
+
 		// Set up the Settings menu item.
 		if (!Setting.isEmpty()) {
-			jQuery('#menu-item-settings a')
+			jQuery('#menu-item-settings button')
 				.ariaClick(ev => {
 					ev.preventDefault();
 					UI.buildSettings();
@@ -240,7 +253,7 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 		}
 
 		// Set up the Restart menu item.
-		jQuery('#menu-item-restart a')
+		jQuery('#menu-item-restart button')
 			.ariaClick(ev => {
 				ev.preventDefault();
 				UI.buildRestart();
@@ -250,7 +263,7 @@ var UIBar = (() => { // eslint-disable-line no-unused-vars, no-var
 
 		// Set up the Share menu item.
 		if (Story.has('StoryShare')) {
-			jQuery('#menu-item-share a')
+			jQuery('#menu-item-share button')
 				.ariaClick(ev => {
 					ev.preventDefault();
 					UI.buildShare();

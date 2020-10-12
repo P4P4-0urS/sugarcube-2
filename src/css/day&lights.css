@@ -1,0 +1,15 @@
+/*
+
+ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
+
+*/
+
+.btn-switch-bg-dayLights
+{
+    background-color: #cccccc; /**#6d6d6d*/
+}
+
+.btn-switch-bg-dayLights:before
+{
+    background-color: #ffffff; /**#222*/
+}

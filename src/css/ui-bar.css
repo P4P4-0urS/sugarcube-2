@@ -81,9 +81,7 @@
 	border-right: 1px solid #444;
 	text-align: center;
 }
-#ui-bar a {
-	text-decoration: none;
-}
+
 #ui-bar hr {
 	border-color: #444;
 }
@@ -150,33 +148,24 @@
 	margin: 1em 0 0;
 	padding: 0;
 	list-style: none;
-	border: 1px solid #444;
 }
+
 #menu ul:empty {
 	display: none;
 }
+
 #menu li {
 	margin: 0;
 }
+
 #menu li:not(:first-child) {
-	border-top: 1px solid #444;
-}
-#menu li a {
-	display: block;
-	padding: 0.25em 0.75em;
-	border: 1px solid transparent;
-	color: #eee;
-	text-transform: uppercase;
-}
-#menu li a:hover {
-	background-color: #444;
-	border-color: #eee;
+	margin-top: 2px;
 }
 
 /* Stop text selection on certain UI elements. */
 #ui-bar-history [id|="history"],
 #ui-bar-toggle,
-#menu a {
+#menu {
 	user-select: none;
 }
 
@@ -201,15 +190,4 @@
 #ui-bar.stowed #ui-bar-toggle:before {
 	content: "\e81e";
 }
-#menu-item-saves a:before {
-	content: "\e82b\00a0";
-}
-#menu-item-settings a:before {
-	content: "\e82d\00a0";
-}
-#menu-item-restart a:before {
-	content: "\e82c\00a0";
-}
-#menu-item-share a:before {
-	content: "\e82f\00a0";
-}
+

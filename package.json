@@ -8,6 +8,13 @@
     "type": "git",
     "url": "https://github.com/tmedwards/sugarcube-2.git"
   },
+  "main": "build.js",
+  "scripts": {
+    "dev": "nodemon -e js,css build -6 -b 2"
+  },
+  "nodemonConfig": {
+    "ignore": ["src/day&lights.json.js"]
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.5",
     "babel-cli": "^6.26.0",
@@ -22,5 +29,8 @@
   "engine": {
     "node": ">=12.16.1"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

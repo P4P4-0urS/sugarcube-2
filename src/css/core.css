@@ -52,8 +52,6 @@ body::-ms-backdrop { /* Prevent IE 11 from hiding the `body` element's backgroun
 	cursor: not-allowed !important;
 }
 body {
-	color: #eee;
-	background-color: #111;
 	overflow: auto;
 }
 a {
