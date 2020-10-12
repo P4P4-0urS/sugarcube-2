@@ -13,7 +13,9 @@
     "dev": "nodemon -e js,css build -6 -b 2"
   },
   "nodemonConfig": {
-    "ignore": ["src/day&lights.json.js"]
+    "ignore": [
+      "src/day&lights.json.js"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "^9.7.5",

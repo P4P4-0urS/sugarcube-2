@@ -13,3 +13,10 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 {
     background-color: #ffffff; /**#222*/
 }
+
+.table-secondary,
+.table-secondary > th,
+.table-secondary > td
+{
+    background-color: #fdfefe;
+}
