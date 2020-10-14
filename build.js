@@ -298,13 +298,15 @@ function cssParser() {
 		let content = _fs.readFileSync(path, { encoding : 'utf-8' })
 			.replace(new RegExp('\r\n','g'), '\n')
 			.replace(new RegExp('\\/\\*[^*][^]*?\\*\\/','g'),'') // strip comments
-			.replace(new RegExp('^[^{\t }][^]*?{','gm') ,
+			.replace(new RegExp('^[^{\t }][^/*{}]*{','gm') ,
 				match => { // target class definition
-				return '"' // start every declaration by a double quote
-					.concat(match.replace(new RegExp('\n{','g'),'" : { ')) // add after that the string while adding the rest
-					.replace('\n',' '); // we strip any \n in the declaration
+
+				return match.replace(new RegExp('^[\\n \\t]*'),'"')
+					.replace(new RegExp('\n','g'), ' ')
+					.replace(new RegExp(' *{'),'" : {\n')
+
 			})
-			.replace(new RegExp('}'),'},') // every braket will be followed by a ,
+			.replace(new RegExp('}','g'),'},') // every braket will be followed by a ,
 		console.log(content)
 		console.log("---------------------")
 		content = content.replace(new RegExp('^[ \\t][^:;\\n]*: *','gm'), // target every line were we have a attributes definition
