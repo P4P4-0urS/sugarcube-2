@@ -33,6 +33,7 @@
   },
   "private": true,
   "dependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "tinycolor2": "^1.4.2"
   }
 }

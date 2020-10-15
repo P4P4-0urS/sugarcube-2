@@ -27,7 +27,7 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 "color" : ["#212529","#DEDAD6"],
 "border-color" : ["#f7fafc","#080503"],
 "background-color" : ["#f7fafc","#080503"],
-"box-shadow" : ["0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08)",""]
+undefined]
 },
 ".btn-secondary:hover" : {
 
@@ -37,7 +37,7 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".btn-secondary:focus, .btn-secondary.focus" : {
 
-"box-shadow" : ["0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08), 0 0 0 0 rgba(247, 250, 252, .5)",""]
+undefined]
 },
 ".btn-secondary.disabled, .btn-secondary:disabled" : {
 
@@ -53,17 +53,17 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-secondary.dropdown-toggle:focus" : {
 
-"box-shadow" : ["none, 0 0 0 0 rgba(247, 250, 252, .5)",""]
+undefined]
 },
 ".alert-secondary" : {
 
 "color" : ["#212529","#dedad6"],
-"border-color" : ["#f8fbfc",""],
-"background-color" : ["#f8fbfc",""]
+undefined],
+undefined]
 },
 ".alert-secondary a" : {
 
-"color" : ["#8dbece",""]
+undefined]
 },
 ".alert-secondary a:hover" : {
 
@@ -71,78 +71,74 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".alert-secondary hr" : {
 
-"border-top-color" : ["#e6f1f4",""]
+undefined]
 },
 ".alert-secondary .alert-link" : {
 
-"color" : ["#d2e3ee",""]
+undefined]
 },
 ".list-group-item-secondary" : {
 
-"color" : ["#808283",""],
-"background-color" : ["#fdfefe",""]
+undefined],
+undefined]
 },
 ".list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus" : {
 
-"color" : ["#808283",""],
-"background-color" : ["#ecf6f6",""]
+undefined],
+undefined]
 },
 ".list-group-item-secondary.list-group-item-action.active" : {
 
-"color" : ["#fff",""],
-"border-color" : ["#808283",""],
-"background-color" : ["#808283",""]
+undefined],
+undefined],
+undefined]
 },
 ".bg-secondary" : {
 
-"background-color" : ["#f7fafc !important","#080503"]
+"background-color" : ["#f7fafc","#080503"]
 },
 "a.bg-secondary:hover, a.bg-secondary:focus, button.bg-secondary:hover, button.bg-secondary:focus" : {
 
-"background-color" : ["#d2e3ee !important",""]
+undefined]
 },
 ".border-secondary" : {
 
-"border-color" : ["#f7fafc !important","#080503"]
+"border-color" : ["#f7fafc","#080503"]
 },
 ".text-secondary" : {
 
-"color" : ["#f7fafc !important","#080503"]
+"color" : ["#f7fafc","#080503"]
 },
 "a.text-secondary:hover, a.text-secondary:focus" : {
 
-"color" : ["#bfd7e7 !important",""]
+undefined]
 },
 ".alert-secondary .close > span:not(.sr-only)" : {
 
-"color" : ["rgba(23, 43, 77, .6)",""]
+undefined]
 },
 ".alert-secondary .close:hover > span:not(.sr-only), .alert-secondary .close:focus > span:not(.sr-only)" : {
 
-"color" : ["#172b4d",""]
+undefined]
 },
 ".badge-secondary" : {
 
 "color" : ["#212529","#dedad6"],
-"background-color" : ["#f7fafc",""]
+undefined]
 },
 ".btn-outline-secondary" : {
 
-"color" : ["#4385b1",""]
+undefined]
 },
 ".custom-checkbox-secondary .custom-control-input:checked ~ .custom-control-label::before" : {
 
 "border-color" : ["#f7fafc","#080503"],
 "background-color" : ["#f7fafc","#080503"]
 },
-".custom-checkbox-secondary .custom-control-input:checked ~ .custom-control-label::after" : {
-
-"background-image" : ["#f7fafc","#080503"]
-},
 ".icon-shape-secondary" : {
 
-"color" : ["#cfe3f1",""],
-"background-color" : ["rgba(255, 255, 255, .5)",""]
+undefined],
+undefined]
 },
 ".checklist-item-secondary:before" : {
 
@@ -154,7 +150,7 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".modal-secondary .modal-header, .modal-secondary .modal-footer" : {
 
-"border-color" : ["rgba(33, 37, 41, .075)",""]
+undefined]
 },
 ".modal-secondary .modal-content" : {
 
@@ -167,7 +163,7 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".modal-secondary .close > span:not(.sr-only)" : {
 
-"color" : ["#fff",""]
+undefined]
 },
 ".popover-secondary" : {
 
@@ -177,7 +173,7 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 
 "color" : ["#212529","#dedad6"],
 "background-color" : ["#f7fafc","#080503"],
-"border-color" : ["rgba(33, 37, 41, .2)",""]
+undefined]
 },
 ".popover-secondary .popover-body" : {
 
@@ -201,15 +197,15 @@ let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { c
 },
 ".bg-gradient-secondary" : {
 
-"background" : ["linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important",""]
+undefined]
 },
 ".section-secondary" : {
 
-"background-color" : ["#f7fafc !important","#080503"]
+"background-color" : ["#f7fafc","#080503"]
 },
 "a.section-secondary:hover, a.section-secondary:focus, button.section-secondary:hover, button.section-secondary:focus" : {
 
-"background-color" : ["#d2e3ee !important",""]
+undefined]
 },
 ".fill-secondary" : {
 

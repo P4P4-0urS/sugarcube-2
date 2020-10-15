@@ -154,6 +154,9 @@ const CONFIG = {
 
 const _fs   = require('fs');
 const _path = require('path');
+const _tinycolor = require('tinycolor2');
+
+const _debug = 0;
 
 const _indent = ' -> ';
 const _opt    = require('node-getopt').create([
@@ -289,6 +292,7 @@ console.log('\nBuilds complete!  (check the "build" directory)');
 /*******************************************************************************
 	Utility Functions
 *******************************************************************************/
+
 function cssParser() {
 	console.log('[*] Starting paring of the css');
 
@@ -298,6 +302,7 @@ function cssParser() {
 		let content = _fs.readFileSync(path, { encoding : 'utf-8' })
 			.replace(new RegExp('\r\n','g'), '\n')
 			.replace(new RegExp('\\/\\*[^*][^]*?\\*\\/','g'),'') // strip comments
+			.replace(new RegExp('!important','g'), '') // Strip all !important from the css page
 			.replace(new RegExp('^[^{\t }][^/*{}]*{','gm') ,
 				match => { // target class definition
 
@@ -307,8 +312,12 @@ function cssParser() {
 
 			})
 			.replace(new RegExp('}','g'),'},') // every braket will be followed by a ,
-		console.log(content)
-		console.log("---------------------")
+		if (_debug)
+		{
+			console.log("[*]" + content)
+			console.log("[*] ---------------------")
+		}
+
 		content = content.replace(new RegExp('^[ \\t][^:;\\n]*: *','gm'), // target every line were we have a attributes definition
 				match => {
 				return match
@@ -324,13 +333,18 @@ function cssParser() {
 			.replace(new RegExp('[ \t]*\\*\\/[ \t]*','g'),'"],')
 			.replace(new RegExp(',[ \n\t]}','g'),'\n}');
 
+		// Need to fill blank color
+		content = content.replace(new RegExp('^[^\n]*?,""','gm'), match => {
+			console.log("++++",match)
+		})
+
 
 		while (!content.endsWith('}')) { // we need to undo the last ,
 			content = content.slice(0,content.length - 1);
 		}
 		content = 'let cssDayLights = (() => { return Object.freeze(Object.defineProperties({}, { css : { value : {'.concat(content,'}}}))})();');
 
-		console.log(content);
+		if (_debug) console.log(content);
 
 		path = 'src/day&lights.json.js';
 

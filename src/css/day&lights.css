@@ -44,7 +44,7 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
     color: #212529; /**#DEDAD6*/
     border-color: #f7fafc; /**#080503*/
     background-color: #f7fafc; /**#080503*/
-    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08); /***/
+    box-shadow: rgba(50, 50, 93, .11); /***/
 }
 .btn-secondary:hover
 {
@@ -76,7 +76,7 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 .btn-secondary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-secondary.dropdown-toggle:focus
 {
-    box-shadow: none, 0 0 0 0 rgba(247, 250, 252, .5); /***/
+    box-shadow: 0 0 0 0 rgba(247, 250, 252, .5); /***/
 }
 
 .alert-secondary
@@ -175,11 +175,6 @@ a.text-secondary:focus
 {
     border-color: #f7fafc; /**#080503*/
     background-color: #f7fafc; /**#080503*/
-}
-
-.custom-checkbox-secondary .custom-control-input:checked ~ .custom-control-label::after
-{
-    background-image: #f7fafc; /**#080503*/
 }
 
 .icon-shape-secondary
