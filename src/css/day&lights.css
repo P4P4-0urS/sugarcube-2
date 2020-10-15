@@ -6,19 +6,19 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 
 .btn-switch-bg-dayLights
 {
-    background-color: #cccccc; /**#333333*/
+    background-color: #cccccc; /***/
 }
 
 .btn-switch-bg-dayLights:before
 {
-    background-color: #ffffff; /**#000*/
+    background-color: #ffffff; /***/
 }
 
 .table-secondary,
 .table-secondary > th,
 .table-secondary > td
 {
-    background-color: #fdfefe; /**#020101*/
+    background-color: #fdfefe; /***/
 }
 
 .table-secondary th,
@@ -26,31 +26,31 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 .table-secondary thead th,
 .table-secondary tbody + tbody
 {
-    border-color: #fbfcfd; /**#040302*/
+    border-color: #fbfcfd; /***/
 }
 
 .table-hover .table-secondary:hover
 {
-    background-color: #ecf6f6; /**#130909*/
+    background-color: #ecf6f6; /***/
 }
 .table-hover .table-secondary:hover > td,
 .table-hover .table-secondary:hover > th
 {
-    background-color: #ecf6f6; /**#130909*/
+    background-color: #ecf6f6; /***/
 }
 
 .btn-secondary
 {
-    color: #212529; /**#DEDAD6*/
-    border-color: #f7fafc; /**#080503*/
-    background-color: #f7fafc; /**#080503*/
+    color: #212529; /***/
+    border-color: #f7fafc; /***/
+    background-color: #f7fafc; /***/
     box-shadow: rgba(50, 50, 93, .11); /***/
 }
 .btn-secondary:hover
 {
-    color: #212529; /**#dedad6*/
-    border-color: #f7fafc; /**#080503*/
-    background-color: #f7fafc; /**#080503*/
+    color: #212529; /***/
+    border-color: #f7fafc; /***/
+    background-color: #f7fafc; /***/
 }
 .btn-secondary:focus,
 .btn-secondary.focus
@@ -60,17 +60,17 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 .btn-secondary.disabled,
 .btn-secondary:disabled
 {
-    color: #212529; /**#dedad6*/
-    border-color: #f7fafc; /**#080503*/
-    background-color: #f7fafc; /**#080503*/
+    color: #212529; /***/
+    border-color: #f7fafc; /***/
+    background-color: #f7fafc; /***/
 }
 .btn-secondary:not(:disabled):not(.disabled):active,
 .btn-secondary:not(:disabled):not(.disabled).active,
 .show > .btn-secondary.dropdown-toggle
 {
-    color: #212529; /**#dedad6*/
-    border-color: #f7fafc; /**#080503*/
-    background-color: #d2e3ee; /**#*/
+    color: #212529; /***/
+    border-color: #f7fafc; /***/
+    background-color: #d2e3ee; /***/
 }
 .btn-secondary:not(:disabled):not(.disabled):active:focus,
 .btn-secondary:not(:disabled):not(.disabled).active:focus,
@@ -81,7 +81,7 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 
 .alert-secondary
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
     border-color: #f8fbfc; /***/
     background-color: #f8fbfc; /***/
 }
@@ -91,7 +91,7 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 }
 .alert-secondary a:hover
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
 }
 .alert-secondary hr
 {
@@ -122,7 +122,7 @@ ATTENTION : EVERY WORD IN THIS CSS IS SUPER DUPER SENSITIVE, MODIFY WITH CARE
 
 .bg-secondary
 {
-    background-color: #f7fafc !important; /**#080503*/
+    background-color: #f7fafc !important; /***/
 }
 
 a.bg-secondary:hover,
@@ -135,12 +135,12 @@ button.bg-secondary:focus
 
 .border-secondary
 {
-    border-color: #f7fafc !important; /**#080503*/
+    border-color: #f7fafc !important; /***/
 }
 
 .text-secondary
 {
-    color: #f7fafc !important; /**#080503*/
+    color: #f7fafc !important; /***/
 }
 
 a.text-secondary:hover,
@@ -162,7 +162,7 @@ a.text-secondary:focus
 
 .badge-secondary
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
     background-color: #f7fafc; /***/
 }
 
@@ -173,8 +173,8 @@ a.text-secondary:focus
 
 .custom-checkbox-secondary .custom-control-input:checked ~ .custom-control-label::before
 {
-    border-color: #f7fafc; /**#080503*/
-    background-color: #f7fafc; /**#080503*/
+    border-color: #f7fafc; /***/
+    background-color: #f7fafc; /***/
 }
 
 .icon-shape-secondary
@@ -185,12 +185,12 @@ a.text-secondary:focus
 
 .checklist-item-secondary:before
 {
-    background-color: #f7fafc; /**#080503*/
+    background-color: #f7fafc; /***/
 }
 
 .modal-secondary .modal-title
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
 }
 
 .modal-secondary .modal-header,
@@ -201,12 +201,12 @@ a.text-secondary:focus
 
 .modal-secondary .modal-content
 {
-    color: #212529; /**#dedad6*/
-    background-color: #f7fafc; /**#080503*/
+    color: #212529; /***/
+    background-color: #f7fafc; /***/
 }
 .modal-secondary .modal-content .heading
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
 }
 
 .modal-secondary .close > span:not(.sr-only)
@@ -216,38 +216,38 @@ a.text-secondary:focus
 
 .popover-secondary
 {
-    background-color: #f7fafc; /**#080503*/
+    background-color: #f7fafc; /***/
 }
 .popover-secondary .popover-header
 {
-    color: #212529; /**#dedad6*/
-    background-color: #f7fafc; /**#080503*/
+    color: #212529; /***/
+    background-color: #f7fafc; /***/
     border-color: rgba(33, 37, 41, .2); /***/
 }
 .popover-secondary .popover-body
 {
-    color: #212529; /**#dedad6*/
+    color: #212529; /***/
 }
 
 .popover-secondary.bs-popover-top .arrow::after,
 .popover-secondary.bs-popover-auto[x-placement^='top'] .arrow::after
 {
-    border-top-color: #f7fafc; /**#080503*/
+    border-top-color: #f7fafc; /***/
 }
 .popover-secondary.bs-popover-right .arrow::after,
 .popover-secondary.bs-popover-auto[x-placement^='right'] .arrow::after
 {
-    border-right-color: #f7fafc; /**#080503*/
+    border-right-color: #f7fafc; /***/
 }
 .popover-secondary.bs-popover-bottom .arrow::after,
 .popover-secondary.bs-popover-auto[x-placement^='bottom'] .arrow::after
 {
-    border-bottom-color: #f7fafc; /**#080503*/
+    border-bottom-color: #f7fafc; /***/
 }
 .popover-secondary.bs-popover-left .arrow::after,
 .popover-secondary.bs-popover-auto[x-placement^='left'] .arrow::after
 {
-    border-left-color: #f7fafc; /**#080503*/
+    border-left-color: #f7fafc; /***/
 }
 
 .bg-gradient-secondary
@@ -257,7 +257,7 @@ a.text-secondary:focus
 
 .section-secondary
 {
-    background-color: #f7fafc !important; /**#080503*/
+    background-color: #f7fafc !important; /***/
 }
 
 a.section-secondary:hover,
@@ -270,10 +270,10 @@ button.section-secondary:focus
 
 .fill-secondary
 {
-    fill: #f7fafc; /**#080503*/
+    fill: #f7fafc; /***/
 }
 
 .stroke-secondary
 {
-    stroke: #f7fafc; /**#080503*/
+    stroke: #f7fafc; /***/
 }

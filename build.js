@@ -155,6 +155,7 @@ const CONFIG = {
 const _fs   = require('fs');
 const _path = require('path');
 const _tinycolor = require('tinycolor2');
+const _colors = require('colors');
 
 const _debug = 0;
 
@@ -168,6 +169,25 @@ const _opt    = require('node-getopt').create([
 ])
 	.bindHelp()     // bind option 'help' to default action
 	.parseSystem(); // parse command line
+
+const colorShade = (col, amt) => {
+	col = col.replace(/^#/, '')
+	if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+
+	let [r, g, b] = col.match(/.{2}/g);
+	([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+
+	r = Math.max(Math.min(255, r), 0).toString(16)
+	g = Math.max(Math.min(255, g), 0).toString(16)
+	b = Math.max(Math.min(255, b), 0).toString(16)
+
+	const rr = (r.length < 2 ? '0' + r[0] : r[0] + r[1])
+	const gg = (g.length < 2 ? '0' + g[0] : g[0] + g[1])
+	const bb = (b.length < 2 ? '0' + b[0] : b[0] + b[1])
+
+	return `#${rr}${gg}${bb}`
+
+}
 
 // uglify-js (v2) does not currently support ES6, so force `unminified` when `es6` is enabled.
 if (_opt.options.es6 && !_opt.options.unminified) {
@@ -292,7 +312,6 @@ console.log('\nBuilds complete!  (check the "build" directory)');
 /*******************************************************************************
 	Utility Functions
 *******************************************************************************/
-
 function cssParser() {
 	console.log('[*] Starting paring of the css');
 
@@ -335,7 +354,50 @@ function cssParser() {
 
 		// Need to fill blank color
 		content = content.replace(new RegExp('^[^\n]*?,""','gm'), match => {
-			console.log("++++",match)
+			let raw_value = match.split('"')[3] // get the value of the css entry
+			raw_value = raw_value.replace(new RegExp('#[0-9a-f]+','g'), match2 => { // get every #Ex code
+				let color = _tinycolor(match2)
+				if (color.isValid())
+				{
+					if (color.isDark())
+					{
+						match2 = colorShade(color.toString(),200)
+					}
+					else
+					{
+						match2 = colorShade(color.toString(),-200)
+					}
+				}
+
+				return match2
+			})
+
+			raw_value = raw_value.replace(new RegExp('rgba\\([0-9 ,.]+\\)','g'), match2 => {
+				let color = _tinycolor(match2)
+				if (color.isDark())
+				{
+					const a = color.getAlpha()
+					match2 = _tinycolor(
+						colorShade(
+							color.toHexString(),200))
+						.setAlpha(a)
+						.toString()
+
+				}
+				else
+				{
+					const a = color.getAlpha()
+					match2 = _tinycolor(
+						colorShade(
+							color.toHexString(),-200))
+						.setAlpha(a)
+						.toString()
+				}
+
+				return match2
+			})
+
+			return match.replace(',""',',"'+raw_value+'"')
 		})
 
 
