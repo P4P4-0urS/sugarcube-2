@@ -325,12 +325,15 @@ function cssParser() {
 			.replace(new RegExp('^[^{\t }][^/*{}]*{','gm') ,
 				match => { // target class definition
 
-				return match.replace(new RegExp('^[\\n \\t]*'),'"')
+				match = match.replace(new RegExp('^[\\n \\t]*'),'"')
 					.replace(new RegExp('\n','g'), ' ')
 					.replace(new RegExp(' *{'),'" : {\n')
 
+				return match
+
 			})
 			.replace(new RegExp('}','g'),'},') // every braket will be followed by a ,
+
 		if (_debug)
 		{
 			console.log("[*]" + content)
