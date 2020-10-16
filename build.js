@@ -157,6 +157,8 @@ const _path = require('path');
 const _tinycolor = require('tinycolor2');
 const _colors = require('colors');
 
+let cssClass = []
+
 const _debug = 0;
 
 const _indent = ' -> ';
@@ -325,7 +327,13 @@ function cssParser() {
 			.replace(new RegExp('^[^{\t }][^/*{}]*{','gm') ,
 				match => { // target class definition
 
+<<<<<<< Updated upstream
 				match = match.replace(new RegExp('^[\\n \\t]*'),'"')
+=======
+				cssClass.push(match)
+
+				return match.replace(new RegExp('^[\\n \\t]*'),'"')
+>>>>>>> Stashed changes
 					.replace(new RegExp('\n','g'), ' ')
 					.replace(new RegExp(' *{'),'" : {\n')
 
@@ -355,6 +363,7 @@ function cssParser() {
 			.replace(new RegExp('[ \t]*\\*\\/[ \t]*','g'),'"],')
 			.replace(new RegExp(',[ \n\t]}','g'),'\n}');
 
+<<<<<<< Updated upstream
 		// Need to fill blank color
 		content = content.replace(new RegExp('^[^\n]*?,""','gm'), match => {
 			let raw_value = match.split('"')[3] // get the value of the css entry
@@ -404,6 +413,8 @@ function cssParser() {
 		})
 
 
+=======
+>>>>>>> Stashed changes
 		while (!content.endsWith('}')) { // we need to undo the last ,
 			content = content.slice(0,content.length - 1);
 		}
@@ -595,6 +606,15 @@ function compileStyles(filenames) {
 
 			processed.warnings().forEach(mesg => console.warn(mesg.text));
 		}
+
+		css = css.replace(new RegExp('\\/\\*[^*][^]*?\\*\\/','g'),'') // Strip all comments
+			.replace(new RegExp('^[^{\t }][^/*{}]*{[^}]*}','gm'),match => {
+				cssClass.forEach(item => {
+					if (match.toString().startsWith(item) && !match.toString().includes('/**'))
+					{ return match.replace(new RegExp('!important','g'),'') }
+				})
+				return match
+			})
 
 		if (!_opt.options.unminified) {
 			css = new CleanCss({
